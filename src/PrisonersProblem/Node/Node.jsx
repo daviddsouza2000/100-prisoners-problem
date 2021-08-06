@@ -4,7 +4,7 @@ import './Node.css';
 
 export default function Node({ index, value, cycleNum, cycleColor }) {
     const nodeStyle = {
-        outlineColor: "#" + cycleColor,
+        //outlineColor: "#" + cycleColor,
         backgroundColor: "#" + cycleColor
     }
     return (
@@ -12,7 +12,8 @@ export default function Node({ index, value, cycleNum, cycleColor }) {
             id={`node-${index}-${value}`} 
             className="node"
             style={nodeStyle}>
-            {index}:{value}
+            {/* {index}:{value} */}
+            {value}
         </div>
     )
 }

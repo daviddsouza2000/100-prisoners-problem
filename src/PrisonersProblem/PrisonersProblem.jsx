@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import Node from './Node/Node';
 
 import { getGrid } from '../utils/utils';
@@ -6,17 +6,37 @@ import { getGrid } from '../utils/utils';
 import './PrisonersProblem.css';
 
 const NUM_NODES = 100;
+//var showColors = false;
+const initialState = { showColors: false };
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'on':
+            return { showColors: true };
+        case 'off':
+            return { showColors: false };
+        default:
+            return { showColors: false };
+    }
+}
 
 export default function PrisonersProblem() {
     const [grid, setGrid] = useState([]);
+    const [cycles, setCycles] = useState([])
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        const newGrid = getInitialGrid();
-        setGrid(newGrid);
+        const { grid, cycles } = getInitialGrid();
+        setGrid(grid);
+        setCycles(cycles);
+        console.log(cycles);
     }, []);
 
     return (
         <>
+            {/* <div>{JSON.stringify(cycles)}</div> */}
+            <button onClick={() => dispatch({type: 'off'})}>Off</button>
+            <button onClick={() => dispatch({type: 'on'})}>On</button>
             <div className="grid">
                 {grid.map((row, rowIdx) => {
                     return (
@@ -30,7 +50,7 @@ export default function PrisonersProblem() {
                                         index={index}
                                         value={value}
                                         cycleNum={cycleNum}
-                                        cycleColor={cycleColor}></Node>
+                                        cycleColor={state.showColors ? cycleColor : 'ffffff'}></Node>
                                 );
                             })}
                         </div>
@@ -42,5 +62,6 @@ export default function PrisonersProblem() {
 }
 
 const getInitialGrid = () => {
-    return getGrid(NUM_NODES);
+    const { grid, cycles } = getGrid(NUM_NODES);
+    return { grid, cycles };
 };
