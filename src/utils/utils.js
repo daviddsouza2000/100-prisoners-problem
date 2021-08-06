@@ -23,7 +23,7 @@ function listToMatrix(list, elementsPerSubArray) {
 }
 
 function putCycles(grid, NUM_NODES){
-    //const cycles = [];
+    const cycles = [];
     var count = 1;
     for(let i = 0;i < NUM_NODES;i++){
         const {index, visited } = grid[i]
@@ -31,22 +31,22 @@ function putCycles(grid, NUM_NODES){
             var randomColor = Math.floor(Math.random()*16777215).toString(16);
             const first = index;
             var currIndex = index;
-            //const cycle = [];
-            //cycle.push(currIndex);
+            const cycle = [];
+            cycle.push(currIndex);
             grid[currIndex-1].cycleNum = count;
             grid[currIndex-1].cycleColor = randomColor;
             do {
                 grid[currIndex-1].visited = true;
                 currIndex = grid[currIndex-1].value;
-                //cycle.push(currIndex);
+                cycle.push(currIndex);
                 grid[currIndex-1].cycleNum = count;
                 grid[currIndex-1].cycleColor = randomColor;
             } while(first !== currIndex);
-            //cycles.push(currIndex);
+            cycles.push(currIndex);
             count++;
         }
     }
-    // return cycles;
+    return cycles;
 }
 
 export function getGrid(NUM_NODES){
@@ -67,8 +67,8 @@ export function getGrid(NUM_NODES){
         }
     );
     
-    putCycles(lst, NUM_NODES);
+    const cycles = putCycles(lst, NUM_NODES);
     const grid = listToMatrix(lst, Math.sqrt(NUM_NODES));
 
-    return grid
+    return { grid, cycles }
 }

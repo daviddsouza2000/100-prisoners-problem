@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Node.css';
 
-export default function Node({ index, value, cycleNum, cycleColor }) {
+export default function Node({ index=0, value=0, cycleNum, cycleColor="ffffff" }) {
     const nodeStyle = {
         outlineColor: "#" + cycleColor,
         backgroundColor: "#" + cycleColor
@@ -12,7 +12,7 @@ export default function Node({ index, value, cycleNum, cycleColor }) {
             id={`node-${index}-${value}`} 
             className="node"
             style={nodeStyle}>
-            {index}:{value}
+            {index + "\n" + value}
         </div>
     )
 }
