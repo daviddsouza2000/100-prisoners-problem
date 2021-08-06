@@ -31,11 +31,27 @@ export default function PrisonersProblem() {
         console.log(cycles);
     }, []);
 
+    const toggleOpacity = (cycle, dim) => {
+        if(dim){
+            cycle.map((index) => {
+                document.getElementById(`node-${index}`).style.opacity = 0.3;
+            });
+        }
+        else {
+            cycle.map((index) => {
+                document.getElementById(`node-${index}`).style.opacity = 1;
+            });
+        }
+    }
+
     return (
         <> 
             <div>
                 {Object.entries(cycles).map(([key, value]) =>
-                <div style={{color:"#"+key}}>{key} : {value.length}</div>
+                <div style={{color:"#"+key}}>{key} : {value.length}
+                    <button onClick={() => toggleOpacity(value, true)}>Off</button>
+                    <button onClick={() => toggleOpacity(value, false)}>On</button>
+                </div>
                 )}
             </div>
             <button onClick={() => dispatch({type: 'off'})}>Off</button>
