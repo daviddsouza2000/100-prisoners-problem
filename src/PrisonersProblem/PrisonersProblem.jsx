@@ -6,7 +6,7 @@ import { getGrid } from '../utils/utils';
 import './PrisonersProblem.css';
 
 const NUM_NODES = 100;
-const initialState = { showColors: false };
+const initialState = { showColors: true };
 
 function reducer(state, action) {
     switch (action.type) {
@@ -32,8 +32,12 @@ export default function PrisonersProblem() {
     }, []);
 
     return (
-        <>
-            {/* <div>{JSON.stringify(cycles)}</div> */}
+        <> 
+            <div>
+                {Object.entries(cycles).map(([key, value]) =>
+                <div style={{color:"#"+key}}>{key} : {value.length}</div>
+                )}
+            </div>
             <button onClick={() => dispatch({type: 'off'})}>Off</button>
             <button onClick={() => dispatch({type: 'on'})}>On</button>
             <div className="grid">

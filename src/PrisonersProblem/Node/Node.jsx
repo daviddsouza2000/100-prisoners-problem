@@ -4,7 +4,8 @@ import './Node.css';
 
 export default function Node({ index, value, cycleNum, cycleColor }) {
     const nodeStyle = {
-        backgroundColor: "#" + cycleColor
+        backgroundColor: "#" + cycleColor,
+        // opacity: 0.3
     }
     return (
         <div 
