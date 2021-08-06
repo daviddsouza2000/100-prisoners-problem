@@ -33,14 +33,10 @@ export default function PrisonersProblem() {
 
     const toggleOpacity = (cycle, dim) => {
         if(dim){
-            cycle.map((index) => {
-                document.getElementById(`node-${index}`).style.opacity = 0.3;
-            });
+            for(let index of cycle ) document.getElementById(`node-${index}`).style.opacity = 0.3;
         }
         else {
-            cycle.map((index) => {
-                document.getElementById(`node-${index}`).style.opacity = 1;
-            });
+            for(let index of cycle ) document.getElementById(`node-${index}`).style.opacity = 1;
         }
     }
 
@@ -48,7 +44,9 @@ export default function PrisonersProblem() {
         <> 
             <div>
                 {Object.entries(cycles).map(([key, value]) =>
-                <div style={{color:"#"+key}}>{key} : {value.length}
+                <div style={{color:"#"+key}}>
+                    <div style={{width: "10px", height: "10px",outline: "1px solid black", backgroundColor: "#"+key, display: "inline-block"}}></div>
+                    {key} : {value.length}
                     <button onClick={() => toggleOpacity(value, true)}>Off</button>
                     <button onClick={() => toggleOpacity(value, false)}>On</button>
                 </div>

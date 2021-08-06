@@ -11,7 +11,7 @@ export default function Node({ index, value, cycleNum, cycleColor }) {
             id={`node-${index}`} 
             className="node"
             style={nodeStyle}>
-            {value}
+            {index}:{value}
         </div>
     )
 }

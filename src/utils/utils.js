@@ -42,6 +42,7 @@ function putCycles(grid, NUM_NODES){
                 grid[currIndex-1].cycleNum = count;
                 grid[currIndex-1].cycleColor = randomColor;
             } while(first !== currIndex);
+            cycle.pop(); // removes last index due to repeating it
             cycles[randomColor] = cycle;
             count++;
         }
