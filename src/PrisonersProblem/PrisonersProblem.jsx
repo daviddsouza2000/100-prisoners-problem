@@ -6,7 +6,6 @@ import { getGrid } from '../utils/utils';
 import './PrisonersProblem.css';
 
 const NUM_NODES = 100;
-//var showColors = false;
 const initialState = { showColors: false };
 
 function reducer(state, action) {
