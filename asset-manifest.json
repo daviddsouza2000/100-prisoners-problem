@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/100-prisoners-problem/static/css/main.74ec3fc7.chunk.css",
+    "main.js": "/100-prisoners-problem/static/js/main.ff69a049.chunk.js",
+    "main.js.map": "/100-prisoners-problem/static/js/main.ff69a049.chunk.js.map",
+    "runtime-main.js": "/100-prisoners-problem/static/js/runtime-main.3439bac5.js",
+    "runtime-main.js.map": "/100-prisoners-problem/static/js/runtime-main.3439bac5.js.map",
+    "static/js/2.2cd60097.chunk.js": "/100-prisoners-problem/static/js/2.2cd60097.chunk.js",
+    "static/js/2.2cd60097.chunk.js.map": "/100-prisoners-problem/static/js/2.2cd60097.chunk.js.map",
+    "static/js/3.383d58b9.chunk.js": "/100-prisoners-problem/static/js/3.383d58b9.chunk.js",
+    "static/js/3.383d58b9.chunk.js.map": "/100-prisoners-problem/static/js/3.383d58b9.chunk.js.map",
+    "index.html": "/100-prisoners-problem/index.html",
+    "static/css/main.74ec3fc7.chunk.css.map": "/100-prisoners-problem/static/css/main.74ec3fc7.chunk.css.map",
+    "static/js/2.2cd60097.chunk.js.LICENSE.txt": "/100-prisoners-problem/static/js/2.2cd60097.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3439bac5.js",
+    "static/js/2.2cd60097.chunk.js",
+    "static/css/main.74ec3fc7.chunk.css",
+    "static/js/main.ff69a049.chunk.js"
+  ]
+}
