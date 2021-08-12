@@ -1,12 +1,25 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer, useRef } from 'react';
 import Node from './Node/Node';
 
 import { getGrid } from '../utils/utils';
 
 import './PrisonersProblem.css';
 
+import Paper from '@material-ui/core/Paper';
+import {
+  Chart,
+  BarSeries,
+  Title,
+  ArgumentAxis,
+  ValueAxis,
+} from '@devexpress/dx-react-chart-material-ui';
+import { Animation } from '@devexpress/dx-react-chart';
+
 const NUM_NODES = 100;
 const initialState = { showColors: true };
+
+const ret = [];
+for(var i = 1; i<=100;i++) ret.push({length: i, frequency: 0})
 
 function reducer(state, action) {
     switch (action.type) {
@@ -24,11 +37,31 @@ export default function PrisonersProblem() {
     const [cycles, setCycles] = useState([])
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // const [data, setData] = useState(() => {
+    //     const ret = [];
+    //     for(var i = 1; i<=100;i++) ret.push({length: i, frequency: 0})
+    //     // return [
+    //     //     { year: '1950', population: 2.525 },
+    //     //     { year: '1960', population: 3.018 },
+    //     //     { year: '1970', population: 3.682 },
+    //     //     { year: '1980', population: 4.440 },
+    //     //     { year: '1990', population: 5.310 },
+    //     //     { year: '2000', population: 6.127 },
+    //     //     { year: '2010', population: 6.930 },
+    //     // ]
+    //     return ret;
+    // });
+
+    const data = useRef(ret);
+
     useEffect(() => {
-        const { grid, cycles } = getInitialGrid();
+        const { grid, cycles, maxLength } = getInitialGrid();
         setGrid(grid);
         setCycles(cycles);
-        console.log(cycles);
+        // console.log(cycles);
+        // console.log(maxLength);
+        data.current[maxLength-1].frequency+=1;
+        console.log(data);
     }, []);
 
     const toggleOpacity = (cycle, dim) => {
@@ -74,11 +107,27 @@ export default function PrisonersProblem() {
                     );
                 })}
             </div>
+
+            <Paper>
+                <Chart
+                    data={data.current}
+                >
+                    <ArgumentAxis />
+                    <ValueAxis />
+
+                    <BarSeries
+                        valueField="frequency"
+                        argumentField="length"
+                    />
+                    <Title text="Frequency of longest cycle length" />
+                    <Animation />
+                </Chart>
+            </Paper>
         </>
     )
 }
 
 const getInitialGrid = () => {
-    const { grid, cycles } = getGrid(NUM_NODES);
-    return { grid, cycles };
+    const { grid, cycles, maxLength } = getGrid(NUM_NODES);
+    return { grid, cycles, maxLength };
 };

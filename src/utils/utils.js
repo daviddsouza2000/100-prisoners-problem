@@ -71,5 +71,8 @@ export function getGrid(NUM_NODES){
     const cycles = putCycles(lst, NUM_NODES);
     const grid = listToMatrix(lst, Math.sqrt(NUM_NODES));
 
-    return { grid, cycles }
+    //const maxLength = Math.max(cycles.map((cycle) => cycle.length));
+    const maxLength = Math.max(...Object.entries(cycles).map(([key, value]) => value.length));
+
+    return { grid, cycles, maxLength }
 }
