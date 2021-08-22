@@ -1,6 +1,6 @@
 # The 100 Prisoners Problem
 
-I created this React app to be used in my video submission to the 3Blue1Boenw SoME1 contest. The app simulates having a cupboard with 100 drawers, each drawer containing a number from 1 to 100. The app randomizes the order of the numbers in the drawers and color codes each cycle to indicate if the prisoners in the problem would be released.
+I created this React app to be used in my video submission to the 3Blue1Brown SoME1 contest. The app simulates having a cupboard with 100 drawers, each drawer containing a number from 1 to 100. The app randomizes the order of the numbers in the drawers and color codes each cycle to indicate if the prisoners in the problem would be released.
 
 Youtube video link: <https://www.youtube.com/watch?v=INuVfXISL7E>
 
